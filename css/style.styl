@@ -78,7 +78,7 @@ html, body {
   padding: 0;
 }
 
-html, body {
+html, body, .page {
   fullWidth();
 }
 
@@ -135,7 +135,7 @@ nav {
         font-size: 1.6rem;
       }
 
-      .title {
+      .profession {
         font-size: 1.2rem;
         color: black25;
       }
@@ -145,5 +145,73 @@ nav {
       height: 5rem;
       border-radius: 50%;
     }
+  }
+}
+
+.page {
+  display: flex;
+}
+
+.container {
+  margin: auto;
+}
+
+.achievements {
+  display: flex;
+  flex-direction: column;
+
+  .columns {
+    display: flex;
+    flex-direction: row;
+
+    .column:first-of-type {
+      margin-right: 1rem;
+    }
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+}
+
+.achievement {
+  font-family: 'Montserrat Light';
+  position: relative;
+  display: flex;
+  width: 45rem;
+  height: 8rem;
+  background-color: #000;
+  border-radius: .4rem;
+  color: #fff;
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+
+  .content {
+    display: flex;
+    margin: auto;
+    width: 100%;
+    .name {
+      line-height: 8rem;
+    }
+  }
+
+  .icon {
+    display: block;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+    color: #f2cc0c;
+    border: 1px solid white25;
+    border-radius: 50%;
+    margin: auto 2rem;
+  }
+
+  .xp {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+    color: white25;
+    font-size: 1.2rem;
+    line-height: 1;
   }
 }
