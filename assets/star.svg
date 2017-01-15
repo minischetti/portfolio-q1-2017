@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 16 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #f2cc0c;
+        stroke-width: 1px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Star_copy" data-name="Star copy" class="cls-1" d="M13,15L11,9l5-3H10L8,0,6,6H0L5,9,3,15l5-4Z"/>
+</svg>
