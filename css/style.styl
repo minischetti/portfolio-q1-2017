@@ -7,6 +7,8 @@ black25=rgba(0,0,0,.25)
 white05=rgba(255,255,255,.05)
 white10=rgba(255,255,255,.1)
 white25=rgba(255,255,255,.25)
+white50=rgba(255,255,255,.5)
+transitionTiming=cubic-bezier(0.68, -0.55, 0.265, 1.55)
 vendors=official
 
 // Fonts
@@ -23,8 +25,9 @@ vendors=official
 
 // Mixins
 transition() {
-  transition: .25s all ease;
+  transition: .75s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
+
 
 fullWidth() {
   width: 100%;
@@ -92,6 +95,30 @@ body {
   font-weight: 300;
   text-transform: uppercase;
   overflow: hidden;
+/*
+  &:before {
+    fullWidth();
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    z-index: -2;
+    opacity: 1;
+    background-blend-mode: overlay;
+  }
+  */
+  &:after {
+    fullWidth();
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../assets/bg.jpg") no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: .5;
+  }
 }
 
 a {
@@ -103,6 +130,12 @@ nav {
   position: absolute;
   width: 100vw;
   height: 10rem;
+  padding: 0 2rem;
+  box-sizing: border-box;
+
+  .links, .avatar {
+    flex: 1;
+  }
 
   .links {
     display: flex;
@@ -124,6 +157,7 @@ nav {
   .avatar {
     display: flex;
     margin: auto;
+    justify-content: flex-end;
 
     .info {
       display: flex;
@@ -177,8 +211,13 @@ nav {
 
 .title {
   font-size: 1.8rem;
+  animation: slideRight 1s transitionTiming;
+  animation-fill-mode: both;
+  margin-bottom: 2rem;
 }
+
 .achievement {
+  cursor: pointer;
   font-family: 'Montserrat Light';
   position: relative;
   display: flex;
@@ -189,11 +228,26 @@ nav {
   color: #fff;
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  transition: .1s all transitionTiming;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 2rem black25;
+    background-color: accent;
+    z-index: 1;
+  }
+
+  &:not(:hover) {
+    z-index: 0;
+  }
 
   .content {
+    transition: 1s all transitionTiming;
     display: flex;
     margin: auto;
     width: 100%;
+    animation: swingIn 2s transitionTiming;
+    animation-fill-mode: both;
     .name {
       line-height: 8rem;
     }
@@ -215,15 +269,23 @@ nav {
     position: absolute;
     right: 1rem;
     bottom: 1rem;
-    color: white25;
+    color: white50;
     font-size: 1.2rem;
     line-height: 1;
   }
 }
 
+.skills {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    animation-delay: 2s;
+  }
+
 .skill {
   display: flex;
-  animation: 2s swingIn cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  animation: 2s swingIn transitionTiming;
   animation-fill-mode: both;
   transform-origin: top;
   backface-visibility: hidden;
@@ -243,7 +305,7 @@ nav {
     line-height: 3.5rem;
     margin-right: 2px;
     font-family: 'Montserrat Light';
-    color: white25;
+    color: white50;
 
     &:after {
       z-index: -1;
@@ -282,7 +344,7 @@ nav {
     }
 
     .star {
-      animation: .5s popIn cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      animation: 1s popIn transitionTiming;
       animation-fill-mode: both;
       margin: auto;
       width: 16px;
@@ -295,7 +357,7 @@ nav {
     }
   }
 }
-
+}
 //Animations
 @keyframes swingIn {
   0% {
@@ -319,6 +381,17 @@ nav {
   }
 }
 
+@keyframes slideRight {
+  0% {
+    opacity: 0;
+    transform: translateX(-5%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes popIn {
   0% {
     opacity: 0;
@@ -329,59 +402,71 @@ nav {
   }
 }
 
-for num in (1..6) {
+
+for num in (1..3) {
+  .column:nth-child(1) .achievement:nth-child({num}) .content
+  {
+    animation-delay: num * .25s;
+  }
+}
+for num in (1..3) {
+  .column:nth-child(2) .achievement:nth-child({num}) .content
+  {
+    animation-delay: num * .25s + .75s;
+  }
+}
+
+for num in (1..7) {
   .skill:nth-child({num})
   {
-    animation-delay: num * 0.25s;
+    animation-delay: num * 0.25s + 2s;
   }
 }
-/*
-for num in (1..5) {
-  .star:nth-child({num})
-  {
-    animation-delay: num * 0.25s + 2s !important;
-  }
-}
-*/
 
 for num in (1..5) {
   .skill:nth-child(1) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + .25s !important;
+    animation-delay: num * 0.25s + 2.25s !important;
   }
 }
 
 for num in (1..5) {
   .skill:nth-child(2) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + .5s !important;
+    animation-delay: num * 0.25s + 2.5s !important;
   }
 }
 
 for num in (1..5) {
   .skill:nth-child(3) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + .75s !important;
+    animation-delay: num * 0.25s + 2.75s !important;
   }
 }
 
 for num in (1..5) {
   .skill:nth-child(4) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + 1s !important;
+    animation-delay: num * 0.25s + 3s !important;
   }
 }
 
 for num in (1..5) {
   .skill:nth-child(5) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + 1.25s !important;
+    animation-delay: num * 0.25s + 3.25s !important;
   }
 }
 
 for num in (1..5) {
   .skill:nth-child(6) .star:nth-child({num})
   {
-    animation-delay: num * 0.25s + 1.5s !important;
+    animation-delay: num * 0.25s + 3.5s !important;
+  }
+}
+for num in (1..5) {
+  .skill:nth-child(7) .star:nth-child({num})
+  {
+    animation-delay: num * 0.25s + 3.5s !important;
   }
 }
