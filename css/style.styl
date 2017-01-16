@@ -228,10 +228,13 @@ nav {
   color: #fff;
   font-size: 1.4rem;
   margin-bottom: 1rem;
+  //animation: fadeIn 2s ease;
+  animation: growIn .5s ease;
+  animation-fill-mode: both;
   transition: .1s all transitionTiming;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) !important;
     box-shadow: 0 0 2rem black25;
     background-color: accent;
     z-index: 1;
@@ -246,7 +249,7 @@ nav {
     display: flex;
     margin: auto;
     width: 100%;
-    animation: swingIn 2s transitionTiming;
+    animation: swingIn 1s transitionTiming;
     animation-fill-mode: both;
     .name {
       line-height: 8rem;
@@ -361,11 +364,11 @@ nav {
 //Animations
 @keyframes swingIn {
   0% {
-    transform: rotateX(-90deg);
+    transform: translateY(-25%);
     opacity: 0;
   }
   100% {
-    transform: rotateX(0deg);
+    transform: translateY(0);
     opacity: 1;
   }
 }
@@ -402,17 +405,53 @@ nav {
   }
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes growIn {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
 
+
+//First Achievement Column Staggered Animation
+for num in (1..3) {
+  .column:nth-child(1) .achievement:nth-child({num})
+  {
+    animation-delay: num * .25s + .5s;
+  }
+}
+
+//Second Achievement Column Staggered Animation
+for num in (1..3) {
+  .column:nth-child(2) .achievement:nth-child({num})
+  {
+    animation-delay: num * .25s + .75s + .5s;
+  }
+}
+
+//First Achievement Column Staggered Animation
 for num in (1..3) {
   .column:nth-child(1) .achievement:nth-child({num}) .content
   {
-    animation-delay: num * .25s;
+    animation-delay: num * .25s + .25s;
   }
 }
+
+//Second Achievement Column Staggered Animation
 for num in (1..3) {
   .column:nth-child(2) .achievement:nth-child({num}) .content
   {
-    animation-delay: num * .25s + .75s;
+    animation-delay: num * .25s + 1s;
   }
 }
 
