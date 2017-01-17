@@ -25,11 +25,6 @@ skew=skewX(-10deg)
 }
 
 // Mixins
-transition() {
-  transition: .75s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-
 fullWidth() {
   width: 100%;
   height: 100%;
@@ -90,12 +85,19 @@ html {
   font-size: 10px;
 }
 
+h1 {
+  font-size: 4.8rem;
+  color: accent;
+  letter-spacing: 10px;
+  text-indent: 10px;
+}
+
 body {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   text-transform: uppercase;
-  overflow: hidden;
+  //overflow: hidden;
 /*
   &:before {
     fullWidth();
@@ -133,6 +135,7 @@ nav {
   height: 10rem;
   padding: 0 2rem;
   box-sizing: border-box;
+  z-index: 1;
 
   .links, .avatar {
     flex: 1;
@@ -184,7 +187,7 @@ nav {
 }
 
 .button {
-  animation: 1s slideRight transitionTiming;
+  overflow: hidden;
   position: absolute;
   left: 50%;
   bottom: 10%;
@@ -198,11 +201,77 @@ nav {
 
 .page {
   display: flex;
+  flex-direction: column;
 }
 
 .container {
   display: flex;
   margin: auto;
+}
+
+.half {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  height: 50vh;
+  background-color: white;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+
+  .title {
+    font-size: 3.6rem;
+    letter-spacing: 10px;
+    text-indent: 10px;
+    margin: 0;
+    color: accent;
+  }
+
+  img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(50%,-50%);
+    height: 75%;
+  }
+}
+
+.showcase {
+  display: flex;
+  height: 100vh;
+
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: auto;
+    width: 50%;
+
+    img {
+      display: block;
+      width: 48%;
+      height: 25%;
+      margin: 1%;
+      transition: .25s all ease;
+    }
+  }
+}
+
+.description {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+
+  .title {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    color: #000;
+  }
+  p {
+    text-transform: none;
+    font-size: 1.4rem;
+    color: rgba(0,0,0,.75);
+    line-height: 2;
+  }
 }
 
 .section {
@@ -559,4 +628,152 @@ for num in (1..5) {
   {
     animation-delay: num * 0.25s + 3s !important;
   }
+}
+
+/////////////CARDS
+.cards {
+  display: flex;
+  margin: auto;
+  width: 50%;
+  flex-wrap: wrap;
+}
+
+.card {
+  flex-shrink: 0;
+  flex-grow: 0;
+  //margin: 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  width: 33%;
+  //border-radius: 4px;
+  color: #fff;
+
+  &:hover {
+    //box-shadow: 0 0 40px rgba(0,0,0,.5);
+    //transform: scale(1.05);
+    //z-index: 1;
+  }
+
+  .preview {
+    transition: .25s all ease;
+    display: block;
+    width: 100%;
+  }
+
+  &:hover .preview {
+    //transform: scale(1.1);
+    filter: blur(4px);
+  }
+
+  .info {
+    overflow: hidden;
+    z-index: 0;
+    //opacity: 0;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    fullWidth();
+    text-transform: uppercase;
+
+    //dim style for hover
+    &:after {
+      transition: .25s all ease;
+      opacity: .5;
+      position: absolute;
+      top: -100%;
+      left: 0;
+      fullWidth();
+      content: "";
+      background-color: accent;
+      z-index: -1;
+    }
+
+
+    .title {
+      centerItem();
+      opacity: 0;
+      font-size: 2.4rem;
+      letter-spacing: 0px;
+      text-indent: 20px;
+      animation-fill-mode: both;
+      text-align: center;
+    }
+
+    .view {
+      display: none;
+      fonts-size: 1.2rem;
+      color: rgba(255,255,255,.5);
+      transform: skewX(-15deg);
+      text-align: center;
+    }
+
+    .button {
+      border-color: #fff;
+      color: #fff;
+      .arrow {
+        opacity: 0;
+        centerItem();
+        left: 0%;
+      }
+
+      span, .arrow {
+        display: block;
+      }
+
+      &:hover {
+        .view {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+
+        .arrow {
+          opacity: 1;
+          left: 50%;
+        }
+      }
+    }
+  }
+
+  &:hover .info:after {
+    top: 0;
+  }
+  &:hover .info {
+    opacity: 1;
+  }
+
+  &:hover .title {
+    animation: expandLetters .75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+    //animation-delay: .25s;
+  }
+
+  &:hover .action {
+    animation: slideRight .75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation-fill-mode: both;
+    //animation-delay: .5s;
+  }
+
+  &:hover .action span {
+  }
+}
+@keyframes expandLetters {
+  100% {
+    opacity: 1;
+    letter-spacing: 20px;
+  }
+}
+
+.case {
+  display: none;
+}
+#work {
+  //display: none;
+  position: absolute;
+  top: 0;
+  z-index: 0;
+  background-color: #fff;
 }
