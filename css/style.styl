@@ -93,7 +93,7 @@ h1 {
 }
 
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat Light', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -126,6 +126,16 @@ body {
 
 a {
   text-decoration: none;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+
+  &:first-child {
+    margin-right: 1%;
+  }
 }
 
 nav {
@@ -215,7 +225,10 @@ nav {
   display: flex;
   height: 50vh;
   background-color: white;
-  border-bottom: 1px solid rgba(0,0,0,.1);
+
+  &:nth-child(odd) {
+    background-color: rgba(0,0,0,.05);
+  }
 
   .title {
     font-size: 3.6rem;
@@ -236,8 +249,31 @@ nav {
 }
 
 .showcase {
+  position: relative;
   display: flex;
   height: 100vh;
+
+  span {
+    font-size: 3.6rem;
+    color: rgba(0,0,0,.25);
+  }
+
+  span:first-of-type {
+    position: absolute;
+    width: 25%;
+    left: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
+  span:last-of-type {
+    position: absolute;
+    width: 25%;
+    right: 0;
+    top: 25%;
+    transform: translateY(-50%);
+    text-align: center;
+  }
 
   .container {
     display: flex;
@@ -245,13 +281,16 @@ nav {
     flex-wrap: wrap;
     margin: auto;
     width: 50%;
+    padding: 10rem 0;
 
     img {
       display: block;
-      width: 48%;
+      width: 100%;
       height: 25%;
-      margin: 1%;
       transition: .25s all ease;
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
     }
   }
 }
@@ -768,12 +807,60 @@ for num in (1..5) {
 }
 
 .case {
-  display: none;
+  //display: none;
+}
+
+.hero {
+  display: flex;
+  height: 50vh;
+  background-image: url('../assets/img/studies/metro/hero.jpg');
+  background-size: cover;
+
+  .title {
+    color: #fff;
+    font-size: 7.2rem;
+    margin: auto;
+  }
 }
 #work {
   //display: none;
-  position: absolute;
-  top: 0;
-  z-index: 0;
+  //position: absolute;
+  //top: 0;
+  //z-index: 0;
   background-color: #fff;
+}
+
+.motion-container {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%,-50%);
+}
+.motion {
+  display: block;
+  width: 180px;
+  height: 180px;
+  border: 1px solid rgba(0,0,0,.25);
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: rotateCircle 5s linear infinite;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    border: 1px solid accent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@keyframes rotateCircle {
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
