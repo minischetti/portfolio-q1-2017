@@ -837,6 +837,22 @@ for num in (1..5) {
     opacity: 0;
     letter-spacing: 32px;
   }
+  &:hover .view {
+    transition-delay: .25s;
+    opacity: 1;
+  }
+
+  .view {
+    transition: .25s all ease;
+    letter-spacing: 8px;
+    opacity: 0;
+    centerItem();
+
+    span {
+      color: #fff;
+    }
+
+  }
 
   .title {
     color: #fff;
