@@ -73,7 +73,7 @@ h1 {
 }
 
 body {
-  font-family: 'Montserrat Light', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
   text-transform: uppercase;
@@ -174,6 +174,124 @@ nav {
   border-radius: .4rem;
   transform: skew translate(-50%,-50%);
   padding: 1rem 2rem;
+}
+
+#home {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  fullWidth();
+  background-color: #000;
+  z-index: 1;
+  color: #fff;
+  transition: .75s all ease;
+  transition-delay: .5s;
+
+  &.active {
+    opacity: 0;
+  }
+
+  h1 {
+    transition: .5s all ease;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%,-10%);
+    color: white10;
+    &.active {
+      opacity: 0;
+      top: 0;
+    }
+  }
+
+  .user {
+    cursor: pointer;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    text-align: center;
+
+    &:hover .user-avatar:after {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+
+    .user-avatar {
+      transition: .25s all ease;
+      width: 10rem;
+      height: 10rem;
+      position: relative;
+      margin: 2rem auto;
+
+      img {
+        border-radius: 50%;
+        fullWidth();
+      }
+
+      &:after {
+        transition: .25s all ease;
+        opacity: 0;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        fullWidth();
+        border-radius: 50%;
+        border: 1px solid white10;
+        box-sizing: border-box;
+        }
+
+        &.active {
+          animation: .5s shrinkDown transitionTiming;
+          animation-fill-mode: both;
+        }
+    }
+
+    span {
+      &.active {
+        animation: .5s slideOut transitionTiming;
+        animation-fill-mode: both;
+      }
+    }
+
+    span:first-of-type {
+      margin: .5rem 0;
+    }
+    span:last-of-type {
+      font-size: 1.2rem;
+      color: white50;
+    }
+  }
+
+  @keyframes shrinkDown {
+    100% {
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+/*
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    fullWidth();
+    z-index: -1;
+    background-image: url("../assets/bg.jpg");
+    background-size: cover;
+    opacity: 1;
+  }
+
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    fullWidth();
+    background-color: #000;
+    opacity: .95;
+  }
+  */
 }
 
 .page {
@@ -494,6 +612,12 @@ nav {
     transform: translateY(0);
   }
 }
+@keyframes slideOut {
+  100% {
+    opacity: 0;
+    transform: translateY(25%);
+  }
+}
 
 @keyframes slideRight {
   0% {
@@ -522,6 +646,14 @@ nav {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 @keyframes growIn {
@@ -618,18 +750,17 @@ for num in (1..5) {
   overflow: hidden;
   position: relative;
   width: 33.33%;
-  //border-radius: 4px;
   color: #fff;
   background-color: #fff;
 
   .preview {
-    transition: .25s all ease;
+    transition: .5s all ease;
     display: block;
     width: 100%;
   }
 
   &:hover .preview {
-    filter: blur(4px);
+    filter: blur(2px);
   }
 
   .info {
@@ -647,8 +778,8 @@ for num in (1..5) {
 
     //dim style for hover
     &:after {
-      transition: .25s all ease;
-      opacity: .5;
+      transition: .5s all ease;
+      opacity: .75;
       position: absolute;
       top: -100%;
       left: 0;
