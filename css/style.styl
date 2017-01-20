@@ -115,23 +115,36 @@ nav {
   box-sizing: border-box;
   z-index: 1;
 
-  .links, .avatar {
+  .nav, .avatar {
     flex: 1;
   }
 
-  .links {
+  .nav {
     display: flex;
     margin: auto;
 
-    a {
-      color: black25;
-      font-size: 2.4rem;
+    .back {
+      display: flex;
+      position: relative;
+      width: 5rem;
+      height: 5rem;
 
-      &:not(:last-of-type) {
-        margin-right: 2rem;
+      img {
+        margin: auto;
       }
-      &.active {
-        color: #000;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: "";
+        fullWidth();
+        border: 1px solid rgba(255,255,255,.1);
+        border-radius: 50%;
+      }
+
+      &:hover &:after {
+        border-color: accent;
       }
     }
   }
@@ -563,6 +576,7 @@ nav {
     margin-right: 2px;
     font-family: 'Montserrat Light';
     color: white50;
+    transform: skew;
 
     &:after {
       z-index: -1;
@@ -575,7 +589,6 @@ nav {
       //border: 1px solid accent;
       //box-sizing: border-box;
       background-color: #000;
-      transform: skew;
       border-radius: 4px 0 0 4px;
     }
   }
