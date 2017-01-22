@@ -1,33 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16">
-  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
-   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-      <rdf:Description rdf:about=""/>
-   </rdf:RDF>
-</x:xmpmeta>
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                                                                                                    
-                           
-<?xpacket end="w"?></metadata>
-<defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="14" viewBox="0 0 12.13 11.875">
+  <defs>
     <style>
       .cls-1 {
         fill: #1a8cff;
@@ -35,5 +7,5 @@
       }
     </style>
   </defs>
-  <path id="IN" class="cls-1" d="M0,15.987H2.72V-0.008H0V15.987Zm19.3-4.05L9.922-.008H7.2V15.987H9.922V4.317l9.14,11.67h2.954V-0.008H19.293V11.937Z"/>
+  <path id="LinkedIn" class="cls-1" d="M1206.13,695.5v4.642h-2.6v-4.331c0-1.089-.37-1.831-1.31-1.831a1.437,1.437,0,0,0-1.34.984,1.882,1.882,0,0,0-.08.657v4.521h-2.61s0.04-7.336,0-8.1h2.61v1.147a0.049,0.049,0,0,0-.02.026h0.02V693.19a2.558,2.558,0,0,1,2.34-1.338C1204.85,691.852,1206.13,693.01,1206.13,695.5Zm-10.66-7.358a1.4,1.4,0,1,0-.03,2.8h0.02A1.4,1.4,0,1,0,1195.47,688.139Zm-1.32,12h2.61v-8.1h-2.61v8.1Z" transform="translate(-1194 -688.125)"/>
 </svg>
