@@ -108,12 +108,23 @@ a {
 
 nav {
   display: flex;
-  position: absolute;
+  position: fixed;
   width: 100%;
   height: 10rem;
   padding: 0 2rem;
   box-sizing: border-box;
   z-index: 1;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 7rem;
+    z-index: -1;
+    transition: .5s all ease;
+  }
 
   &, * {
     transition: .5s all ease;
@@ -130,9 +141,12 @@ nav {
 
     .back {
       display: flex;
-      position: relative;
+      position: absolute
+      top: 0;
+      left: 0;
       width: 5rem;
       height: 5rem;
+      margin: 1rem;
       box-sizing: border-box;
 
       img {
@@ -156,15 +170,56 @@ nav {
   }
 
   .avatar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
+    flex-direction: column;
     margin: auto;
-    justify-content: flex-end;
+    margin: 1rem 0;
+
+    .user-avatar {
+      position: relative;
+      margin: auto;
+      width: 5rem;
+      height: 5rem;
+      &:after {
+        transition: .25s all ease;
+        opacity: 0;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        fullWidth();
+        border-radius: 50%;
+        border: 1px solid white10;
+        box-sizing: border-box;
+        img {
+          display: block;
+        }
+      }
+    }
+
+    &:hover .user-avatar:after {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+
+
+    &:hover .info {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     .info {
+      color: #fff;
       display: flex;
-      margin: auto 1rem auto 0;
       flex-direction: column;
       text-align: right;
+      margin: 1rem 0;
+      transform: translateY(-25%);
+      opacity: 0;
 
       .user {
         font-size: 1.6rem;
@@ -172,10 +227,11 @@ nav {
 
       .profession {
         font-size: 1.2rem;
-        color: black25;
+        opacity: .5;
       }
     }
     img {
+      margin: 0 auto;
       width: 5rem;
       height: 5rem;
       border-radius: 50%;
@@ -183,34 +239,45 @@ nav {
   }
   &.scroll {
     position: fixed;
-    background-color: #000;
-    height: 6rem;
-    padding: 0 1rem 0 0;
+    height: 7rem;
 
-    .avatar {
-      img {
-        width: 4rem;
-        height: 4rem;
-      }
-      .user, .profession {
-        color: #fff;
-      }
-      .user {
-        font-size: 1.2rem;
-      }
-      .profession {
-        opacity: .25;
-      }
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 7rem;
+      z-index: -1;
+    }
+
+    .info {
+      display: none;
     }
 
     .back {
-      width: 6rem;
-      height: 6rem;
-
       &:after {
         border-radius: 0;
         border: 0;
       }
+    }
+  }
+}
+
+.social {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 7rem;
+  margin-right: 1rem;
+
+  a {
+    margin: auto;
+    padding: 1rem;
+
+    img {
+      display: block;
     }
   }
 }
