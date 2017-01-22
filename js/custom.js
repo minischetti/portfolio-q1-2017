@@ -13,8 +13,10 @@ if (sessionStorage.getItem("selectedProfile") === "yes") {
 $(window).scroll(function() {
     if ($(this).scrollTop() > 80) { // this refers to window
         $('nav').addClass('scroll')
+        $('.avatar').addClass('hidden')
     }
     else {
       $('nav').removeClass('scroll')
+      $('nav').removeClass('hidden')
     }
 });
