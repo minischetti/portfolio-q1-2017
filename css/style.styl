@@ -1052,6 +1052,26 @@ for num in (1..5) {
     border-radius: 50%;
     box-sizing: border-box;
     transform: translate(-50%,-50%);
+    animation: pulseShadow 2.5s ease infinite;
+    animation-fill-mode: both;
+  }
+}
+
+@keyframes pulseShadow {
+  0% {
+    box-shadow: 0 0 10px rgba(26,140,255,.25), inset 0 0 10px rgba(26,140,255,.25)
+  }
+  20% {
+    box-shadow: 0 0 0px rgba(26,140,255,.25), inset 0 0 0px rgba(26,140,255,.25)
+  }
+  40% {
+    box-shadow: 0 0 10px rgba(26,140,255,.25), inset 0 0 10px rgba(26,140,255,.25)
+  }
+  80% {
+    box-shadow: 0 0 0px rgba(26,140,255,.25), inset 0 0 0px rgba(26,140,255,.25)
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(26,140,255,.25), inset 0 0 10px rgba(26,140,255,.25)
   }
 }
 
