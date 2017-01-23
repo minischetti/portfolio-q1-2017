@@ -262,6 +262,9 @@ nav.scroll .back:after {
   animation: 0.5s slideDown cubic-bezier(0.68, -0.55, 0.265, 1.55);
   animation-fill-mode: backwards;
 }
+.social a img {
+  display: block;
+}
 .social a:hover {
   transform: scale(1.25);
 }
