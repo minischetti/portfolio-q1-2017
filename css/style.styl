@@ -1,4 +1,4 @@
-// out: style.css, sourcemap: true, compress: true, nib: true
+// out: style.css, sourcemap: true, nib: true
 
 // Variables
 accent=#1a8cff
@@ -64,10 +64,6 @@ centerItem() {
   centerItem();
 }
 // General Styles
-.placeholder {
-  cursor: pointer;
-}
-
 ::selection {
   color: white;
   background-color: accent;
@@ -300,7 +296,6 @@ nav {
       width: 100%;
       height: 7rem;
       z-index: -1;
-      //background-color: #000;
     }
 
     .info {
@@ -331,7 +326,7 @@ nav {
     padding: 1rem;
     color: white25;
     animation: .5s slideDown transitionTiming;
-    animation-fill-mode: both;
+    animation-fill-mode: backwards;
 
     &:hover {
       transform: scale(1.25);
@@ -354,6 +349,11 @@ nav {
   padding: 1rem 2rem;
 }
 
+#particles-js {
+  position: absolute;
+  fullWidth();
+}
+
 #home {
   display: flex;
   flex-direction: column;
@@ -364,9 +364,6 @@ nav {
   color: #fff;
   transition: .5s all ease;
   transition-delay: .5s;
-  background-color: #000;
-  //background-image: url("../assets/bgDark.jpg");
-  //background-size: cover;
 
   &.active {
     transform: translateY(-100%);
@@ -479,6 +476,12 @@ nav {
   }
 }
 
+#work {
+  .half {
+    background-color: rgba(0,0,0,.05);
+  }
+}
+
 .page {
   display: flex;
   flex-direction: column;
@@ -516,7 +519,7 @@ nav {
   display: flex;
 
   & div {
-    width: 25%;
+    width: 20%;
 
     img {
       display: block;
@@ -598,22 +601,27 @@ nav {
   font-family: "Proxima Nova Semibold";
   display: flex;
   letter-spacing: 2px;
-  //animation: slideRight 1s transitionTiming;
-  animation-fill-mode: both;
   margin-bottom: 2rem;
 
   span:first-child {
-    animation: slantIn 1s ease;
-    animation-fill-mode: both;
+    opacity: 0;
+    transform: skewX(-25deg) translateY(-50%);
     margin-right: .5rem;
     color: accent;
-
+    transition: 1s all ease;
+    &.animate {
+      opacity: 1;
+      animation: slantIn 1s ease;
+      animation-fill-mode: both;
+    }
   }
 
   span:last-child {
-    animation: slideRight 1s ease;
-    animation-fill-mode: both;
-    animation-delay: .25s;
+    &.animate {
+      animation: slideRight 1s ease;
+      animation-fill-mode: both;
+      animation-delay: .25s;
+    }
   }
 }
 
@@ -643,7 +651,6 @@ nav {
     background-color: #000;
     border-radius: .4rem;
     color: #fff;
-    //animation: fadeIn 2s ease;
     transition: .1s all transitionTiming;
 
     &:not(:last-of-type) {
@@ -762,8 +769,6 @@ nav {
       width: 100%;
       height: 100%;
       content: "";
-      //border: 1px solid accent;
-      //box-sizing: border-box;
       background-color: #000;
       border-radius: 4px 0 0 4px;
     }
@@ -906,7 +911,7 @@ nav {
 }
 
 // Social Link Staggered slideDown
-for num in (1..4) {
+for num in (1..5) {
   .social a:nth-of-type({num})
   {
     animation-delay: num * 0.05s + .25s !important;
@@ -985,7 +990,7 @@ for num in (1..5) {
   }
 }
 
-/////////////CARDS
+//Cards
 .cards {
   display: flex;
   margin: auto;
@@ -1009,13 +1014,11 @@ for num in (1..5) {
   &:hover .preview {
     transform: translateY(-100%);
     opacity: 0;
-    //filter: blur(2px);
   }
 
   .info {
     overflow: hidden;
     z-index: 0;
-    //opacity: 0;
     display: flex;
     margin: auto;
     flex-direction: column;
@@ -1043,16 +1046,9 @@ for num in (1..5) {
     }
   }
 
-  &:hover .info:after {
-    //top: 0;
-  }
   &:hover .info {
     opacity: 1;
   }
-}
-
-.case {
-  //display: none;
 }
 
 .hero {
@@ -1072,7 +1068,6 @@ for num in (1..5) {
     background-size: cover;
     z-index: -1;
     transition: .5s all ease;
-    //filter: grayscale(1);
 
     .metro&{
           background-image: url('../assets/img/studies/metro/hero.jpg');
@@ -1126,6 +1121,14 @@ for num in (1..5) {
   }
 }
 
+.scrollArrow {
+  position: absolute;
+  left: 50%;
+  bottom: 3rem;
+  animation: 1s pokeDown infinite;
+  transform: translateX(-50%);
+}
+
 @keyframes pokeLeft {
   0% {
     transform: translateX(25%);
@@ -1144,16 +1147,27 @@ for num in (1..5) {
   }
 }
 
+@keyframes pokeDown {
+  0% {
+    transform: translateY(25%);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(25%);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(25%);
+  }
+}
+
 .hero:hover .view, .card:hover .view {
   transition-delay: .25s;
   opacity: 1;
-}
-
-#work {
-  //display: none;
-  //position: absolute;
-  //top: 0;
-  //z-index: 0;
 }
 
 #study {
@@ -1270,9 +1284,12 @@ for num in (1..5) {
 
 //General Phone
 @media (max-width: 768px) {
-
-  #profile {
+  #profile, #particles-js, body:after {
     display: none;
+  }
+
+  footer {
+    margin-bottom: 7rem;
   }
 
   h1 {
@@ -1346,6 +1363,7 @@ for num in (1..5) {
       }
 
       .info {
+        color: #fff;
         text-align: right;
         transform: translateY(0);
         margin: auto 1rem;
