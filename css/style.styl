@@ -3,6 +3,7 @@
 // Variables
 accent=#1a8cff
 black05=rgba(0,0,0,.05)
+black10=rgba(0,0,0,.10)
 black25=rgba(0,0,0,.25)
 white05=rgba(255,255,255,.05)
 white10=rgba(255,255,255,.1)
@@ -97,6 +98,10 @@ body {
   font-size: 1.6rem;
   text-transform: uppercase;
   overflow-x: hidden;
+
+  &.noScroll {
+    overflow: hidden;
+  }
 
   &:after {
     fullWidth();
@@ -206,6 +211,7 @@ nav {
     margin: 1rem 0;
     animation: .75s avatarDown transitionTiming;
 
+
     &.hidden {
       animation: none;
     }
@@ -215,6 +221,7 @@ nav {
       margin: auto;
       width: 5rem;
       height: 5rem;
+
       &:after {
         transition: .25s all ease;
         opacity: 0;
@@ -224,11 +231,20 @@ nav {
         top: 0;
         fullWidth();
         border-radius: 50%;
-        border: 1px solid white10;
+        border: 1px solid black10;
         box-sizing: border-box;
         img {
           display: block;
         }
+      }
+    }
+    &.light {
+      .info {
+        color: #fff;
+      }
+
+      .user-avatar:after {
+        border-color: white10;
       }
     }
 
@@ -251,10 +267,6 @@ nav {
       transform: translateY(-25%);
       opacity: 0;
       animation: 2.5s avatarInfo transitionTiming;
-
-      &.light {
-        color: #fff;
-      }
 
       .user {
         font-family: 'Proxima Nova Semibold';
@@ -1097,6 +1109,7 @@ for num in (1..5) {
 }
 
 .view {
+  font-family: 'Proxima Nova Semibold';
   transition: .25s all ease;
   letter-spacing: 4px;
   opacity: 0;
@@ -1238,5 +1251,142 @@ for num in (1..5) {
     transform: translate(100%, -100%);
     opacity: 0;
   }
+}
 
+// Media Queries
+
+//Tablet
+@media (max-width: 1024px) {
+    .half {
+      height: initial;
+      min-height: 50vh;
+
+      .container {
+        width: 75%;
+        text-align: justify;
+      }
+    }
+}
+
+//General Phone
+@media (max-width: 768px) {
+
+  #profile {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+    width: 100%;
+    text-align: center;
+  }
+  .page {
+    padding: 7rem 0;
+  }
+  .showcase {
+    span {
+      display: none;
+    }
+
+    .container {
+      width: 100%;
+      padding: 0;
+
+      img:not(:last-child) {
+        margin-bottom: 0;
+      }
+
+      .column {
+        width: 100%;
+        &:first-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .half {
+    min-height: 100vh;
+    .container {
+      width: 90%;
+    }
+  }
+
+  .hero {
+    min-height: 50vh;
+
+    .title {
+      font-size: 4.8rem;
+    }
+  }
+
+  .title {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card {
+    width: 50%;
+  }
+
+  nav {
+    background-color: black;
+    height: 7rem;
+
+    .avatar {
+      left: initial;
+      right: 0;
+      height: 7rem;
+      transform: translateX(0);
+      flex-direction: row;
+      margin: auto 1rem;
+
+      .user-avatar {
+        order: 2;
+      }
+
+      .info {
+        text-align: right;
+        transform: translateY(0);
+        margin: auto 1rem;
+      }
+    }
+  }
+
+  .image-container {
+    flex-direction: column;
+
+    div {
+      width: 100%;
+
+      &:not(:first-child) {
+        display: none;
+      }
+    }
+  }
+  .social {
+    position: fixed;
+    top: initial;
+    bottom: 0;
+    width: 100%;
+    height: 7rem;
+    background-color: #000;
+    margin: 0;
+  }
+
+  .motion-container {
+    top: 0%;
+    left: 50%;
+  }
+}
+
+//Portrait Phone
+@media (max-width: 768px) and (orientation:portrait) {
+}
+
+//Landscape Phone
+@media (max-width: 768px) and (orientation:landscape) {
+  .hero, .half {
+    min-height: 100vh;
+  }
 }
