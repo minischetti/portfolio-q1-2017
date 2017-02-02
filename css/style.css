@@ -430,7 +430,7 @@ nav.scroll .back:after {
   display: flex;
 }
 .image-container div {
-  width: 20%;
+  width: 25%;
 }
 .image-container div img {
   display: block;
@@ -540,6 +540,9 @@ nav.scroll .back:after {
   border-radius: 0.4rem;
   color: #fff;
   transition: 0.1s all cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.achievements .achievement.inactive {
+  opacity: 0.5;
 }
 .achievements .achievement:not(:last-of-type) {
   margin-bottom: 1rem;
@@ -1036,7 +1039,7 @@ nav.scroll .back:after {
     text-align: center;
   }
   .page {
-    padding: 7rem 0;
+    padding: 5rem 0;
   }
   .showcase span {
     display: none;
@@ -1075,9 +1078,13 @@ nav.scroll .back:after {
   }
   nav {
     background-color: #000;
-    height: 7rem;
+    height: 5rem;
+  }
+  nav.scroll {
+    height: 5em;
   }
   nav .avatar {
+    display: none;
     left: initial;
     right: 0;
     height: 7rem;
@@ -1093,6 +1100,7 @@ nav.scroll .back:after {
     text-align: right;
     transform: translateY(0);
     margin: auto 1rem;
+    opacity: 1 !important;
   }
   .image-container {
     flex-direction: column;
@@ -1105,10 +1113,9 @@ nav.scroll .back:after {
   }
   .social {
     position: fixed;
-    top: initial;
-    bottom: 0;
+    top: 0;
     width: 100%;
-    height: 7rem;
+    height: 5rem;
     background-color: #000;
     margin: 0;
   }
