@@ -374,12 +374,13 @@ nav {
   }
 
   h1 {
-    transition: .5s all ease;
     position: absolute;
+    width: 100%;
     top: 10%;
-    left: 50%;
-    transform: translate(-50%,-10%);
+    transform: translateY(-10%);
+    text-align: center;
     color: white10;
+    transition: .5s all ease;
 
     &.active {
       opacity: 0;
@@ -494,6 +495,7 @@ nav {
 .container {
   display: flex;
   margin: auto;
+  justify-content: center;
 }
 
 .half {
@@ -1083,6 +1085,9 @@ for num in (1..5) {
     }
     .yali&{
           background-image: url('../assets/img/studies/yali/hero.jpg');
+    }
+    .fortunes&{
+          background-image: url('../assets/img/studies/fortunes/hero.jpg');
     }
   }
   .metro:after {

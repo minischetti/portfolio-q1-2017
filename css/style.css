@@ -303,12 +303,13 @@ nav.scroll .back:after {
   transform: translateY(-100%);
 }
 #home h1 {
-  transition: 0.5s all ease;
   position: absolute;
+  width: 100%;
   top: 10%;
-  left: 50%;
-  transform: translate(-50%, -10%);
+  transform: translateY(-10%);
+  text-align: center;
   color: rgba(255,255,255,0.1);
+  transition: 0.5s all ease;
 }
 #home h1.active {
   opacity: 0;
@@ -405,6 +406,7 @@ nav.scroll .back:after {
 .container {
   display: flex;
   margin: auto;
+  justify-content: center;
 }
 .half {
   position: relative;
@@ -898,6 +900,9 @@ nav.scroll .back:after {
 }
 .yali.hero:after {
   background-image: url("../assets/img/studies/yali/hero.jpg");
+}
+.fortunes.hero:after {
+  background-image: url("../assets/img/studies/fortunes/hero.jpg");
 }
 .hero .metro:after {
   background-image: url("../assets/img/studies/metro/hero.jpg");
